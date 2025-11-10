@@ -41,6 +41,17 @@ export const clinicConfig = {
     username: "admin",
     password: "ABCClinic2025!",
   },
+
+  adminUsers: [
+    {
+      username: "admin",
+      password: "ABCClinic2025!",
+    },
+    {
+      username: "Clinic_Admin",
+      password: "ABC@clinic",
+    },
+  ],
 };
 
 export const doctors = [

@@ -52,10 +52,11 @@ export const Admin: React.FC = () => {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    if (
-      credentials.username === clinicConfig.admin.username &&
-      credentials.password === clinicConfig.admin.password
-    ) {
+    const isValidUser = clinicConfig.adminUsers?.some(
+      (user) => user.username === credentials.username && user.password === credentials.password
+    );
+
+    if (isValidUser) {
       setIsAuthenticated(true);
     } else {
       alert('Invalid credentials');
@@ -158,7 +159,7 @@ export const Admin: React.FC = () => {
           <div className="flex items-center justify-between">
             <div>
               <h1 className="text-2xl font-bold text-gray-900">{clinicConfig.name} - Admin Panel</h1>
-              <p className="text-sm text-gray-600">Logged in as: Admin</p>
+              <p className="text-sm text-gray-600">Logged in as: {credentials.username}</p>
             </div>
             <Button onClick={handleLogout} variant="outline" size="sm">
               <LogOut className="w-4 h-4 mr-2" />
