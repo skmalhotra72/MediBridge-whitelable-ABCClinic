@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { LogOut, FileText, Calendar, TestTube, BarChart, Eye, Trash2, CheckCircle } from 'lucide-react';
+import { LogOut, FileText, Calendar, TestTube, BarChart, Eye, Trash2, CheckCircle, Home } from 'lucide-react';
 import { clinicConfig } from '../config/clinic';
 import { supabase } from '../lib/supabase';
 import { Button } from '../components/Button';
@@ -136,9 +136,20 @@ export const Admin: React.FC = () => {
             </Button>
           </form>
 
-          <p className="text-xs text-gray-500 text-center mt-6">
-            Change default password after first login
-          </p>
+          <div className="flex flex-col gap-3 mt-6">
+            <Button
+              onClick={() => window.location.href = '/'}
+              variant="outline"
+              size="md"
+              className="w-full"
+            >
+              <Home className="w-4 h-4 mr-2" />
+              Back to Home
+            </Button>
+            <p className="text-xs text-gray-500 text-center">
+              Change default password after first login
+            </p>
+          </div>
         </div>
       </div>
     );
@@ -161,10 +172,20 @@ export const Admin: React.FC = () => {
               <h1 className="text-2xl font-bold text-gray-900">{clinicConfig.name} - Admin Panel</h1>
               <p className="text-sm text-gray-600">Logged in as: {credentials.username}</p>
             </div>
-            <Button onClick={handleLogout} variant="outline" size="sm">
-              <LogOut className="w-4 h-4 mr-2" />
-              Logout
-            </Button>
+            <div className="flex items-center gap-3">
+              <Button
+                onClick={() => window.location.href = '/'}
+                variant="outline"
+                size="sm"
+              >
+                <Home className="w-4 h-4 mr-2" />
+                Home
+              </Button>
+              <Button onClick={handleLogout} variant="outline" size="sm">
+                <LogOut className="w-4 h-4 mr-2" />
+                Logout
+              </Button>
+            </div>
           </div>
         </div>
       </header>
